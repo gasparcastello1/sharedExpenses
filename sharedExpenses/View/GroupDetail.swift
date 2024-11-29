@@ -27,34 +27,57 @@ struct GroupDetail: View {
                         }
                     }
                 }
+                
                 Section(header: Text("Simplified debts")) {
-                    
+                    HStack {
+                        Spacer()
+                        Button("Resume transactions") {
+//                            //call view model method
+                        }
+                    }
                 }
+                
                 Section(header: Text("Expenses")) {
                     ForEach(group.expenses, id: \.self) { expense in
-                        Text("$\(String(expense.amount)), paid by: \(expense.paidBy.name) \nshared with:")
+                        Text("$\(String(expense.amount)), paid by: \(expense.paidBy.name) \nshared with: \(sharedUsersNames(from: expense.shares))")
+                            .padding()
+                    }
+                    .onDelete { offsets in
+                        withAnimation {
+                            for index in offsets {
+                                group.expenses.remove(at: index)
+                            }
+                        }
                     }
                 }//DETAIL LIST
             }
+            .navigationTitle("\(group.name)")
             .toolbar {
-                ToolbarItem {
-                    Button("ADD AN EXPENSE", systemImage: "plus", action: {isPresentingSheet.toggle()})
-                        .labelStyle(.titleAndIcon)
-                        .sheet(isPresented: $isPresentingSheet) {
-                            // Pass the binding to dismiss the sheet
-                            NewExpense(
-                                isPresented: $isPresentingSheet,
-                                selectedUser: group.users[0],
-                                checkedPeople: group.users.map({ user in
-                                    (user: user, checked: false)
-                                }),
-                                id: group.id
-                            )
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        isPresentingSheet.toggle()
+                    }) {
+                        HStack {
+                            Image(systemName: "plus")
+                            Text("Add")
                         }
+                    }
+                    .labelStyle(.titleAndIcon)
+                    .sheet(isPresented: $isPresentingSheet) {
+                        NewExpense(
+                            isPresented: $isPresentingSheet,
+                            selectedUser: group.users[0],
+                            checkedPeople: group.users.map({ user in
+                                (user: user, checked: false)
+                            }),
+                            id: group.id
+                        )
+                    }
                 }
-//                    ToolbarItem(placement: .navigationBarTrailing) {
-//                        EditButton()
-//                    }
             }
+    }
+
+    func sharedUsersNames(from shares: [ExpenseShare]) -> String {
+        shares.compactMap { $0.user.name }.joined(separator: ", ")
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct NewGroupSheet: View {
     @Environment(\.modelContext) private var modelContext
     @Binding var isPresented: Bool
-    @State private var name: String = "Shoes and mates"
+    @State private var name: String = ""
     @State private var checkedPeople: [UserCheckTuple] = [
         (user: User(name:"Gaspi"), checked: false),
         (user: User(name:"Ana"), checked: false),
@@ -28,7 +28,7 @@ struct NewGroupSheet: View {
     
     var body: some View {
         VStack {
-            TextField("Name", text: $name)
+            TextField("Enter a name for this group", text: $name)
                 .padding()
             List {
                 ForEach(checkedPeople.indices, id: \.self) { index in
@@ -45,6 +45,7 @@ struct NewGroupSheet: View {
 
             Button("SAVE") {
                 withAnimation {
+                    //TODO: Create Users
                     let newItem = Group(name: name, users: checkedUsers)
                     modelContext.insert(newItem)
                     isPresented = false

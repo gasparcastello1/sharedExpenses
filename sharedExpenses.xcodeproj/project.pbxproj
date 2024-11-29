@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4939CF682BC40F2F007B5DDE /* sharedExpensesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF672BC40F2F007B5DDE /* sharedExpensesApp.swift */; };
+		4939CF682BC40F2F007B5DDE /* SharedExpensesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF672BC40F2F007B5DDE /* SharedExpensesApp.swift */; };
 		4939CF6A2BC40F2F007B5DDE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF692BC40F2F007B5DDE /* ContentView.swift */; };
-		4939CF6C2BC40F2F007B5DDE /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF6B2BC40F2F007B5DDE /* Group.swift */; };
 		4939CF6E2BC40F31007B5DDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4939CF6D2BC40F31007B5DDE /* Assets.xcassets */; };
 		4939CF722BC40F31007B5DDE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4939CF712BC40F31007B5DDE /* Preview Assets.xcassets */; };
 		4939CF7C2BC40F31007B5DDE /* sharedExpensesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF7B2BC40F31007B5DDE /* sharedExpensesTests.swift */; };
@@ -18,10 +17,8 @@
 		4939CF952BC428F0007B5DDE /* NewGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF942BC428F0007B5DDE /* NewGroup.swift */; };
 		4939CF972BC47819007B5DDE /* GroupDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF962BC47819007B5DDE /* GroupDetail.swift */; };
 		49776F742BC5F83B00CE8612 /* NewExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49776F732BC5F83B00CE8612 /* NewExpense.swift */; };
-		49776F772BC6B06200CE8612 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49776F762BC6B06200CE8612 /* Expense.swift */; };
-		49776F792BC6B09A00CE8612 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49776F782BC6B09A00CE8612 /* User.swift */; };
-		49776F7E2BC6B89800CE8612 /* MainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49776F7D2BC6B89800CE8612 /* MainHelper.swift */; };
 		49776F802BC6B97E00CE8612 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49776F7F2BC6B97E00CE8612 /* Commons.swift */; };
+		49F7BBE72CF9F00600F2B71E /* DebtCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F7BBE62CF9F00000F2B71E /* DebtCalculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,9 +40,8 @@
 
 /* Begin PBXFileReference section */
 		4939CF642BC40F2F007B5DDE /* sharedExpenses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sharedExpenses.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4939CF672BC40F2F007B5DDE /* sharedExpensesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sharedExpensesApp.swift; sourceTree = "<group>"; };
+		4939CF672BC40F2F007B5DDE /* SharedExpensesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedExpensesApp.swift; sourceTree = "<group>"; };
 		4939CF692BC40F2F007B5DDE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		4939CF6B2BC40F2F007B5DDE /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		4939CF6D2BC40F31007B5DDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4939CF6F2BC40F31007B5DDE /* sharedExpenses.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sharedExpenses.entitlements; sourceTree = "<group>"; };
 		4939CF712BC40F31007B5DDE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -57,11 +53,13 @@
 		4939CF942BC428F0007B5DDE /* NewGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroup.swift; sourceTree = "<group>"; };
 		4939CF962BC47819007B5DDE /* GroupDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetail.swift; sourceTree = "<group>"; };
 		49776F732BC5F83B00CE8612 /* NewExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpense.swift; sourceTree = "<group>"; };
-		49776F762BC6B06200CE8612 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
-		49776F782BC6B09A00CE8612 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		49776F7D2BC6B89800CE8612 /* MainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHelper.swift; sourceTree = "<group>"; };
 		49776F7F2BC6B97E00CE8612 /* Commons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
+		49F7BBE62CF9F00000F2B71E /* DebtCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtCalculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		49F7BBDA2CF9EF8400F2B71E /* SchemaVersions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SchemaVersions; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4939CF612BC40F2F007B5DDE /* Frameworks */ = {
@@ -111,8 +109,8 @@
 		4939CF662BC40F2F007B5DDE /* sharedExpenses */ = {
 			isa = PBXGroup;
 			children = (
-				4939CF672BC40F2F007B5DDE /* sharedExpensesApp.swift */,
-				49776F7D2BC6B89800CE8612 /* MainHelper.swift */,
+				49F7BBE62CF9F00000F2B71E /* DebtCalculator.swift */,
+				4939CF672BC40F2F007B5DDE /* SharedExpensesApp.swift */,
 				49776F7F2BC6B97E00CE8612 /* Commons.swift */,
 				49776F7A2BC6B11400CE8612 /* View */,
 				49776F752BC6B05100CE8612 /* Model */,
@@ -151,9 +149,7 @@
 		49776F752BC6B05100CE8612 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				49776F762BC6B06200CE8612 /* Expense.swift */,
-				4939CF6B2BC40F2F007B5DDE /* Group.swift */,
-				49776F782BC6B09A00CE8612 /* User.swift */,
+				49F7BBDA2CF9EF8400F2B71E /* SchemaVersions */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +179,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				49F7BBDA2CF9EF8400F2B71E /* SchemaVersions */,
 			);
 			name = sharedExpenses;
 			productName = sharedExpenses;
@@ -299,16 +298,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49776F7E2BC6B89800CE8612 /* MainHelper.swift in Sources */,
-				49776F772BC6B06200CE8612 /* Expense.swift in Sources */,
+				49F7BBE72CF9F00600F2B71E /* DebtCalculator.swift in Sources */,
 				49776F802BC6B97E00CE8612 /* Commons.swift in Sources */,
 				4939CF952BC428F0007B5DDE /* NewGroup.swift in Sources */,
 				4939CF6A2BC40F2F007B5DDE /* ContentView.swift in Sources */,
-				4939CF6C2BC40F2F007B5DDE /* Group.swift in Sources */,
 				49776F742BC5F83B00CE8612 /* NewExpense.swift in Sources */,
 				4939CF972BC47819007B5DDE /* GroupDetail.swift in Sources */,
-				49776F792BC6B09A00CE8612 /* User.swift in Sources */,
-				4939CF682BC40F2F007B5DDE /* sharedExpensesApp.swift in Sources */,
+				4939CF682BC40F2F007B5DDE /* SharedExpensesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
