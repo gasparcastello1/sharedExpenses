@@ -32,20 +32,68 @@ struct NewExpense: View {
             group.id == id
         }
     }
-    var users: [User] { group.users }
+    var users: [User] {
+        group.users
+    }
+    
+    private func createSharedExpense() {
+        var sharedWith: [ExpenseShare] = []
+        
+        if sharedType == .equal {
+            // Distribute the amount equally among checked people
+            let equalShare = 1.0 / Double(checkedPeopleList.count)
+            for user in checkedPeopleList {
+                let expenseShare = ExpenseShare(
+                    user: user,
+                    percentage: equalShare
+                )
+                sharedWith.append(expenseShare)
+            }
+        } else if sharedType == .custom {
+            // Handle custom percentages, ensuring they sum up to 100
+            let totalPercentage = percentagesList.values.reduce(0.0, +)
+            guard totalPercentage == 1.0 else {
+                // Handle validation error (total must be 100%)
+                return
+            }
+            
+            for user in checkedPeopleList {
+                if let percentage = percentagesList[user] {
+                    let expenseShare = ExpenseShare(
+                        user: user,
+                        percentage: percentage
+                    )
+                    sharedWith.append(expenseShare)
+                }
+            }
+        }
+        
+        // Create the expense object
+        let expense = Expense(
+            amount: try! Double(amount, format: .number),
+            paidBy: selectedUser,
+            shares: sharedWith
+        )
+        
+        // Add the expense to the group and save
+        group.expenses.append(expense)
+        isPresented = false
+    }
     
     var body: some View {
         VStack {
             List {
-                TextField("$", text: $amount)
+                TextField("How much was it ?", text: $amount)
                 
                 Picker("Paid by", selection: $selectedUser) {
-                    ForEach(users) { user in
+                    ForEach(users, id: \.self) { user in
                         Text(user.name)
-                        //                            .tag(user)
+                            .tag(user)  // Tag the user with the actual `User` object
                     }
                 }
-                Section("Split between") {
+                
+                Section(header: Text("Split between")) {
+                    
                     ForEach(checkedPeople.indices, id: \.self) { idx in
                         HStack {
                             Text(checkedPeople[idx].user.name)
@@ -53,7 +101,16 @@ struct NewExpense: View {
                             UserCheckBox(isChecked: $checkedPeople[idx].checked)
                         }
                     }
-                    
+                    HStack {
+                        Spacer()
+                        Button("All") {
+                            let allSelected = checkedPeople.allSatisfy { $0.checked }
+                            // Toggle the checked state of all users
+                            for index in checkedPeople.indices {
+                                checkedPeople[index].checked = !allSelected
+                            }
+                        }
+                    }
                 }
                 
                 Picker("shared as", selection: $sharedType) {
@@ -80,29 +137,16 @@ struct NewExpense: View {
                                     }))
                             }
                         }
-                        //validates total percentage must sum 100, enter only number up to 2 digits
                     }
                 }
             }
             
             Spacer()
             
-            Button(action: {
-                withAnimation {
-                    var sharedWith: [User: Percentage]
-                    if sharedType == .equal {
-                        //
-                    }
-                    let expense = Expense(
-                        amount: try! Double(amount, format: .number),
-                        paidBy: selectedUser,
-                        sharedWith: [:]
-                    )
-                    // error:
-//                    Thread 1: "Illegal attempt to establish a relationship 'paidBy' between objects in different contexts (source = <NSManagedObject: 0x600002220370> (entity: Expense; id: 0x6000003124c0 <x-coredata:///Expense/t4E878B2D-9604-4567-86E3-69DBD146CB567>; data: {\n    amount = 3154;\n    paidBy = nil;\n    sharedWith = nil;\n}) , destination = <NSManagedObject: 0x600002157cf0> (entity: User; id: 0x8ead11dcd33080ee <x-coredata://FFB65CDB-199B-47E3-9FA5-C81075AD429E/User/p4>; data: {\n    groups = \"<relationship fault: 0x600000313280 'groups'>\";\n    id = \"267A6D5B-013C-4D16-B0D8-FFD0A631DA51\";\n    name = Gaspi;\n}))"
-                    group.modelContext
-                    group.expenses.append(expense)
-                    isPresented = false
+            Button(
+                action: {
+                    withAnimation {
+                        createSharedExpense()
                 }
             }) {
                 Text("Save Expense")
@@ -112,16 +156,5 @@ struct NewExpense: View {
                     .cornerRadius(.infinity)
             }
         }
-//        .toolbar {
-//            ToolbarItem(placement: .principal) {
-//                Text("New Expense")
-//            }
-//            ToolbarItem(placement: .topBarLeading) {
-//                Button(action: {isPresented.toggle()}) {
-//                    Text("Cancel")
-//                }
-//                .foregroundStyle(.red)
-//            }
-//        }
     }
 }

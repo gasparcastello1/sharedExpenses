@@ -10,15 +10,20 @@ import SwiftUI
 struct NewGroupSheet: View {
     @Environment(\.modelContext) private var modelContext
     @Binding var isPresented: Bool
-    @State private var name: String = "Shoes and mates"
+    @State private var name: String = ""
     @State private var checkedPeople: [UserCheckTuple] = [
         (user: User(name:"Gaspi"), checked: false),
-        (user: User(name:"Ana"), checked: false),
-        (user: User(name:"Max"), checked: false),
-        (user: User(name:"Meli"), checked: false),
-        (user: User(name:"Martin"), checked: false),
-        (user: User(name:"Jazmin"), checked: false),
-        (user: User(name:"Flaca"), checked: false)
+        (user: User(name:"Fau"), checked: false),
+        (user: User(name:"Mica"), checked: false),
+        (user: User(name:"Lean"), checked: false),
+        (user: User(name:"Vero"), checked: false),
+        (user: User(name:"Juampi"), checked: false),
+        (user: User(name:"Gime"), checked: false),
+        (user: User(name:"Bian"), checked: false),
+        (user: User(name:"Lau"), checked: false),
+        (user: User(name:"Brisa"), checked: false),
+        (user: User(name:"Tincho"), checked: false),
+        (user: User(name:"Aili"), checked: false)
     ]
     
     private var checkedUsers: [User] { checkedPeople
@@ -28,27 +33,38 @@ struct NewGroupSheet: View {
     
     var body: some View {
         VStack {
-            TextField("Name", text: $name)
+            TextField("Ex: Birthday party", text: $name)
                 .padding()
-            List {
-                ForEach(checkedPeople.indices, id: \.self) { index in
-                    HStack {
-                        Text(checkedPeople[index].user.name)
-                        Spacer()
-                        UserCheckBox(isChecked: $checkedPeople[index].checked)
-                    }
-                }
-            }
-            .listStyle(.plain)
+            TextField("John William", text: $name)
+                .padding()
+            
+//            List {
+//                ForEach(checkedPeople.indices, id: \.self) { index in
+//                    HStack {
+//                        Text(checkedPeople[index].user.name)
+//                        Spacer()
+//                        UserCheckBox(isChecked: $checkedPeople[index].checked)
+//                    }
+//                }
+//            }
+//            .listStyle(.plain)
             
             .padding()
-
-            Button("SAVE") {
-                withAnimation {
-                    let newItem = Group(name: name, users: checkedUsers)
-                    modelContext.insert(newItem)
-                    isPresented = false
+            Button(
+                action: {
+                    withAnimation {
+                        //TODO: Create Users
+                        let newItem = Group(name: name, users: checkedUsers)
+                        modelContext.insert(newItem)
+                        isPresented = false
+                    }
                 }
+            ) {
+                Text("SAVE")
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(.red)
+                    .cornerRadius(.infinity)
             }
             
         }//: VSTACK

@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "E70E2616-84BC-4ACC-A9F2-09902DC0D0A7",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:sharedExpenses.xcodeproj",
+      "identifier" : "4939CF632BC40F2F007B5DDE",
+      "name" : "sharedExpenses"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:sharedExpenses.xcodeproj",
+        "identifier" : "4939CF762BC40F31007B5DDE",
+        "name" : "sharedExpensesTests"
+      }
+    }
+  ],
+  "version" : 1
+}

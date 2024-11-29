@@ -16,7 +16,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text(groups.isEmpty ? "CREATE NEW GROUP" : "OPEN GROUPS")) {
+                Section(header: Text(groups.isEmpty ? "CREATE A GROUP" : "OPENED GROUPS")) {
                     ForEach(groups) { group in
                         NavigationLink(group.name) {
                             GroupDetail(group: group)
@@ -46,7 +46,6 @@ struct ContentView: View {
                 
             }
         }
-        
     }
     
     private func addItem() {

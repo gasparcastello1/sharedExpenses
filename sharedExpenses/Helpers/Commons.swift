@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct Icon {
-    static let ok = "🤙🏽"
-    static let checked = "✅"
-    static let badBalance = "🤯"
-}
-
 typealias Percentage = Double
 typealias Amount = Double
 typealias Debt = [User: Amount]
