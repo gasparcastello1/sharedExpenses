@@ -15,9 +15,10 @@
 		4939CF7C2BC40F31007B5DDE /* sharedExpensesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF7B2BC40F31007B5DDE /* sharedExpensesTests.swift */; };
 		4939CF862BC40F31007B5DDE /* sharedExpensesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF852BC40F31007B5DDE /* sharedExpensesUITests.swift */; };
 		4939CF882BC40F31007B5DDE /* sharedExpensesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF872BC40F31007B5DDE /* sharedExpensesUITestsLaunchTests.swift */; };
-		4939CF952BC428F0007B5DDE /* NewGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF942BC428F0007B5DDE /* NewGroup.swift */; };
+		4939CF952BC428F0007B5DDE /* CreateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF942BC428F0007B5DDE /* CreateGroup.swift */; };
 		4939CF972BC47819007B5DDE /* GroupDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF962BC47819007B5DDE /* GroupDetail.swift */; };
-		49776F742BC5F83B00CE8612 /* NewExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49776F732BC5F83B00CE8612 /* NewExpense.swift */; };
+		4965B1C82D7DE75A00D1B6A4 /* UserCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4965B1C72D7DE75A00D1B6A4 /* UserCheckBox.swift */; };
+		49776F742BC5F83B00CE8612 /* CreateExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49776F732BC5F83B00CE8612 /* CreateExpense.swift */; };
 		49776F802BC6B97E00CE8612 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49776F7F2BC6B97E00CE8612 /* Commons.swift */; };
 		49E83EB42D309D97003955C6 /* debtCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E83EB32D309D97003955C6 /* debtCalculatorTests.swift */; };
 		49F7BBE72CF9F00600F2B71E /* DebtCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F7BBE62CF9F00000F2B71E /* DebtCalculator.swift */; };
@@ -53,9 +54,10 @@
 		4939CF812BC40F31007B5DDE /* sharedExpensesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sharedExpensesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4939CF852BC40F31007B5DDE /* sharedExpensesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sharedExpensesUITests.swift; sourceTree = "<group>"; };
 		4939CF872BC40F31007B5DDE /* sharedExpensesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sharedExpensesUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		4939CF942BC428F0007B5DDE /* NewGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroup.swift; sourceTree = "<group>"; };
+		4939CF942BC428F0007B5DDE /* CreateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroup.swift; sourceTree = "<group>"; };
 		4939CF962BC47819007B5DDE /* GroupDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetail.swift; sourceTree = "<group>"; };
-		49776F732BC5F83B00CE8612 /* NewExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpense.swift; sourceTree = "<group>"; };
+		4965B1C72D7DE75A00D1B6A4 /* UserCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCheckBox.swift; sourceTree = "<group>"; };
+		49776F732BC5F83B00CE8612 /* CreateExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExpense.swift; sourceTree = "<group>"; };
 		49776F7F2BC6B97E00CE8612 /* Commons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
 		49E83EB32D309D97003955C6 /* debtCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = debtCalculatorTests.swift; sourceTree = "<group>"; };
 		49E83EB62D309E9E003955C6 /* sharedExpenses.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = sharedExpenses.xctestplan; sourceTree = "<group>"; };
@@ -173,10 +175,11 @@
 		49776F7A2BC6B11400CE8612 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4965B1C72D7DE75A00D1B6A4 /* UserCheckBox.swift */,
 				4939CF692BC40F2F007B5DDE /* ContentView.swift */,
-				4939CF942BC428F0007B5DDE /* NewGroup.swift */,
-				49776F732BC5F83B00CE8612 /* NewExpense.swift */,
+				4939CF942BC428F0007B5DDE /* CreateGroup.swift */,
 				4939CF962BC47819007B5DDE /* GroupDetail.swift */,
+				49776F732BC5F83B00CE8612 /* CreateExpense.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -324,10 +327,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				49F7BBE72CF9F00600F2B71E /* DebtCalculator.swift in Sources */,
+				4965B1C82D7DE75A00D1B6A4 /* UserCheckBox.swift in Sources */,
 				49776F802BC6B97E00CE8612 /* Commons.swift in Sources */,
-				4939CF952BC428F0007B5DDE /* NewGroup.swift in Sources */,
+				4939CF952BC428F0007B5DDE /* CreateGroup.swift in Sources */,
 				4939CF6A2BC40F2F007B5DDE /* ContentView.swift in Sources */,
-				49776F742BC5F83B00CE8612 /* NewExpense.swift in Sources */,
+				49776F742BC5F83B00CE8612 /* CreateExpense.swift in Sources */,
 				4939CF972BC47819007B5DDE /* GroupDetail.swift in Sources */,
 				4939CF682BC40F2F007B5DDE /* SharedExpensesApp.swift in Sources */,
 			);

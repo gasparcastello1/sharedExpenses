@@ -16,7 +16,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text(groups.isEmpty ? "CREATE A GROUP" : "OPENED GROUPS")) {
+                Section(header: Text(groups.isEmpty ? "" : "Opened groups")) {
                     ForEach(groups) { group in
                         NavigationLink(group.name) {
                             GroupDetail(group: group)
@@ -30,7 +30,6 @@ struct ContentView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     Text("Groups")
                         .font(.headline)
-                        .foregroundStyle(.red)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -39,8 +38,7 @@ struct ContentView: View {
                     Button("Sign In", systemImage: "plus", action: addItem)
                         .labelStyle(.titleAndIcon)
                         .sheet(isPresented: $isPresentingSheet) {
-                            // Pass the binding to dismiss the sheet
-                            NewGroupSheet(isPresented: $isPresentingSheet)
+                            CreateGroupSheet(isPresented: $isPresentingSheet)
                         }
                 }
                 

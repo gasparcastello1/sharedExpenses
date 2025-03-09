@@ -8,33 +8,24 @@
 import SwiftUI
 import SwiftData
 
-struct NewExpense: View {
+struct CreateExpense: View {
     @Binding var isPresented: Bool
     @Query private var groups: [Group]
-    
+
     @State var amount: String = ""
     @State var selectedUser: User
     @State var sharedType: SharingType = .equal
     @State var checkedPeople: [UserCheckTuple]
-    var checkedPeopleList: [User] {
-        checkedPeople.filter { $0.checked }.map { $0.user }
-    }
+    var checkedPeopleList: [User] { checkedPeople.filter { $0.checked }.map { $0.user } }
     
     @State var percentagesList: [User: Percentage] = [:]
     
     enum SharingType: String, CaseIterable {
         case equal, custom
     }
-    
-    var id: PersistentIdentifier
-    var group: Group! {
-        groups.first { group in
-            group.id == id
-        }
-    }
-    var users: [User] {
-        group.users
-    }
+
+    var group: Group
+    var users: [User] { group.users }
     
     private func createSharedExpense() {
         var sharedWith: [ExpenseShare] = []
@@ -88,7 +79,7 @@ struct NewExpense: View {
                 Picker("Paid by", selection: $selectedUser) {
                     ForEach(users, id: \.self) { user in
                         Text(user.name)
-                            .tag(user)  // Tag the user with the actual `User` object
+                            .tag(user)
                     }
                 }
                 
@@ -143,6 +134,7 @@ struct NewExpense: View {
             
             Spacer()
             
+            if amount.isEmpty { Text("Enter amount").foregroundStyle(.primary) }
             Button(
                 action: {
                     withAnimation {
@@ -152,9 +144,10 @@ struct NewExpense: View {
                 Text("Save Expense")
                     .foregroundColor(.white)
                     .padding()
-                    .background(.red)
+                    .background(.primary)
                     .cornerRadius(.infinity)
             }
+            .disabled(amount.isEmpty)
         }
     }
 }

@@ -33,10 +33,6 @@ class DebtCalculator {
                 balances[user, default: 0] -= shareAmount
             }
         }
-//        precondition(
-//            abs(balances.reduce(0, { $0 + $1.value })) < 0.01,
-//            "Balance must reduced to zero"
-//        )
         return balances
     }
     
@@ -104,10 +100,10 @@ class DebtCalculator {
                 debtors.sort { $0.1 > $1.1 } // Maintain order
             }
             
-            let isBalanceSynced = (creditors.isEmpty && debtors.isEmpty)
+            _ = (creditors.isEmpty && debtors.isEmpty)
             || (!creditors.isEmpty && !debtors.isEmpty)
         }
-        
+
         return transactions
     }
     
